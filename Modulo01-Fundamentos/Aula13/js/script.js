@@ -23,7 +23,7 @@ const preventFunctionSubmit = () => {
   form.addEventListener('submit', handleFormSubmit);
 };
 
-function activateInput() {
+const activateInput = () => {
   const insertName = (newName) => {
     globalNames = [...globalNames, newName];
     // globalNames.push(newName);
@@ -49,7 +49,7 @@ function activateInput() {
 
   inputName.focus();
   inputName.addEventListener('keyup', handleTyping);
-}
+};
 
 function render() {
   const createDeleteButton = (index) => {
