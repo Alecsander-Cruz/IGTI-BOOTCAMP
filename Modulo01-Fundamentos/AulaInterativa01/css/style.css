@@ -1,0 +1,15 @@
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+#inputRange {
+  max-width: 500px;
+}
+
+#div-content {
+  margin-top: 20px;
+}
