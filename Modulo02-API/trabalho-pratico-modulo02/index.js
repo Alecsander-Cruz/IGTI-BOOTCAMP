@@ -36,13 +36,13 @@ async function getStatesandCities() {
       //prettier-ignore
       allStatesCities = [...allStatesCities,{ State: state.Nome, UF: state.Sigla, Cities: states },];
     });
+
     getCitiesWithLargestName();
     getCitiesWithSmallestName();
     getLargestCityNameOfAll();
     getSmallestCityNameOfAll();
     getStatesWithMoreCities();
     getStatesWithLessCities();
-    // console.log(allStatesCities);
   } catch (err) {
     console.log(err);
   }
