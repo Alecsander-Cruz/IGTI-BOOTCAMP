@@ -1,16 +1,1 @@
-{
-  "nextId": 15,
-  "accounts": [
-    { "id": 1, "name": "Alecsander Cruz", "balance": 150 },
-    { "id": 2, "name": "Alecsander José", "balance": 125 },
-    { "id": 3, "name": "Joao Tantan", "balance": 140 },
-    { "id": 5, "name": "josef climber", "balance": 200 },
-    { "id": 6, "name": "teste put", "balance": 298.75 },
-    { "id": 7, "name": "josef kimber", "balance": 203 },
-    { "id": 8, "name": "joao pe de feijao", "balance": 300 },
-    { "id": 9, "name": "joao feijao", "balance": 310 },
-    { "id": 11, "name": "jotinha cabuloso", "balance": 335 },
-    { "id": 12, "name": "jotinha cabuloso", "balance": 335 },
-    { "id": 14, "name": "jesus", "balance": 10000000000 }
-  ]
-}
+{"nextId":17,"accounts":[{"id":1,"name":"Alecsander Cruz","balance":150},{"id":2,"name":"Alecsander José","balance":125},{"id":3,"name":"Joao Tantan","balance":140},{"id":5,"name":"josef climber","balance":200},{"id":6,"name":"teste puteeee","balance":363},{"id":7,"name":"josef kimber","balance":203},{"id":8,"name":"joao pe de feijao","balance":300},{"id":9,"name":"joao feijao","balance":310},{"id":11,"name":"jotinha cabuloso","balance":335},{"id":12,"name":"jotinha cabuloso","balance":335},{"id":14,"name":"jesus","balance":10000000000}]}
