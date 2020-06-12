@@ -19,10 +19,10 @@ app.listen(3000, async () => {
       nextId: 1,
       accounts: [],
     };
-    // try {
-    //   await fs.writeFile(global.fileName, JSON.stringify(initialJson));
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      await fs.writeFile(global.fileName, JSON.stringify(initialJson));
+    } catch (err) {
+      console.log(err);
+    }
   }
 });
