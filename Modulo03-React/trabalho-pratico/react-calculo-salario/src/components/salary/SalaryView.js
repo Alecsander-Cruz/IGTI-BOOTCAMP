@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { calculateSalaryFrom } from './salary.js';
 import { formatNumber } from '../../helpers/formatHelpers.js';
 import BarShower from '../bar/ProgressBarSalary.js';
+import css from './salary.module.css';
 
 export default class SalaryView extends Component {
   constructor() {
@@ -31,6 +32,18 @@ export default class SalaryView extends Component {
     });
   };
 
+  showPercentage = (value1, value2) => {
+    let result = 0;
+    if (value1 === '') {
+      return result;
+    }
+
+    result = value2 * 100;
+    result = result / value1;
+    result = +result.toFixed(2);
+    return result;
+  };
+
   render() {
     const {
       baseINSS,
@@ -43,69 +56,90 @@ export default class SalaryView extends Component {
     const { fullSalary } = this.props;
 
     return (
-      <div>
-        <span>
-          Salário bruto:
-          <input
-            type="number"
-            placeholder={'Insira o valor'}
-            onChange={this.handleInput}
-            value={fullSalary}
-          />
-        </span>
-        <div>
-          <span>
-            Base INSS:
+      <div className="row">
+        <div className="col s12">
+          <div className={css.flexColumn}>
+            <span className={css.lightGray}>Salário bruto:</span>
             <input
-              type="text"
-              placeholder="R$ 0,00"
-              readOnly
-              value={formatNumber(baseINSS)}
+              type="number"
+              placeholder={'Insira o valor'}
+              onChange={this.handleInput}
+              value={fullSalary}
             />
-          </span>
-          <span>
-            Desconto INSS:
-            <input
-              type="text"
-              placeholder="R$ 0,00"
-              readOnly
-              value={formatNumber(discountINSS)}
+          </div>
+
+          <div className="col s12">
+            <span className="col s3">
+              Base INSS:
+              <input
+                className={css.bold}
+                type="text"
+                readOnly
+                value={formatNumber(baseINSS)}
+              />
+            </span>
+
+            <span className="col s3">
+              Desconto INSS:
+              <input
+                className={css.discountINSS}
+                type="text"
+                readOnly
+                value={`${formatNumber(discountINSS)} (${this.showPercentage(
+                  fullSalary,
+                  discountINSS
+                )}%) `}
+              />
+            </span>
+
+            <span className="col s3">
+              Base IRPF:
+              <input
+                className={css.bold}
+                type="text"
+                readOnly
+                value={formatNumber(baseIRPF)}
+              />
+            </span>
+
+            <span className="col s3">
+              Desconto IRPF:
+              <input
+                className={css.discountIRPF}
+                type="text"
+                readOnly
+                value={`${formatNumber(discountIRPF)} (${this.showPercentage(
+                  fullSalary,
+                  discountIRPF
+                )}%)`}
+              />
+            </span>
+          </div>
+
+          <div className="col s12">
+            <div className={`${css.flexColumn} col s3`}>
+              <span>Salário líquido:</span>
+              <input
+                className={css.netSalary}
+                type="text"
+                readOnly
+                value={`${formatNumber(netSalary)} (${this.showPercentage(
+                  fullSalary,
+                  netSalary
+                )}%)`}
+              />
+            </div>
+          </div>
+
+          <div className="col s12">
+            <BarShower
+              fullSalary={fullSalary}
+              discountINSS={discountINSS}
+              discountIRPF={discountIRPF}
+              netSalary={netSalary}
             />
-          </span>
-          <span>
-            Base IRPF:
-            <input
-              type="text"
-              placeholder="R$ 0,00"
-              readOnly
-              value={formatNumber(baseIRPF)}
-            />
-          </span>
-          <span>
-            Desconto IRPF:
-            <input
-              type="text"
-              placeholder="R$ 0,00"
-              readOnly
-              value={formatNumber(discountIRPF)}
-            />
-          </span>
+          </div>
         </div>
-        <span>
-          Salário líquido:
-          <input
-            type="text"
-            placeholder="R$ 0,00"
-            readOnly
-            value={formatNumber(netSalary)}
-          />
-        </span>
-        <BarShower
-          fullSalary={fullSalary}
-          discountINSS={discountINSS}
-          discountIRPF={discountIRPF}
-          netSalary={netSalary}
-        />
       </div>
     );
   }

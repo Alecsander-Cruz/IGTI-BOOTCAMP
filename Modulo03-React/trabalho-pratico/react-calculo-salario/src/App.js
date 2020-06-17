@@ -20,7 +20,7 @@ export default class App extends Component {
     const { fullSalary } = this.state;
 
     return (
-      <div>
+      <div className="container">
         <h2 className="center">React Salário</h2>
         <SalaryView fullSalary={fullSalary} onChange={this.handleChangeInput} />
       </div>

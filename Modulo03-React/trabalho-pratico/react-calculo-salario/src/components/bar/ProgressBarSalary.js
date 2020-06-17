@@ -46,22 +46,19 @@ export default class ProgressBarSalary extends Component {
 
   render() {
     const { bar1, bar2, bar3 } = this.state;
-    // const { fullSalary, discountINSS, discountIRPF, netSalary } = this.props;
 
     return (
-      <div>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <Bar value={bar1} color="#e67e22" />
-          <Bar value={bar2} color="#c0392b" />
-          <Bar value={bar3} color="#16a085" />
-        </div>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Bar value={bar1} color="#e67e22" />
+        <Bar value={bar2} color="#c0392b" />
+        <Bar value={bar3} color="#16a085" />
       </div>
     );
   }
