@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Country from './Country';
 import css from './countries.module.css';
 
