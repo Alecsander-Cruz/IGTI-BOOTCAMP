@@ -24,7 +24,7 @@ export default function Candidates({
             return item.id === candidate.id;
           });
 
-          const previousPercentage = !!previousVoteObject
+          const previousPercentage = !!previousPercentageObject
             ? previousPercentageObject.percentage
             : 0;
 
