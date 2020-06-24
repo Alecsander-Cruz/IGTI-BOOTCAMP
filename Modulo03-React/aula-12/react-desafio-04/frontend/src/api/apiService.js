@@ -108,6 +108,11 @@ export async function insertGrade(grade) {
   return res.data.id;
 }
 
+export async function updateGrade(grade) {
+  const res = await axios.put(API_URL, grade);
+  return res.data.id;
+}
+
 export async function deleteGrade(grade) {
   const res = await axios.delete(`${API_URL}/${grade.id}`);
   return res.data;
