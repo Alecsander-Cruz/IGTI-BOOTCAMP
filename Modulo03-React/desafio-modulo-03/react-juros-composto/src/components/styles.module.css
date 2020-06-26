@@ -1,0 +1,40 @@
+.flexRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.installments {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+}
+
+.installment {
+  margin: 10px;
+}
+
+.id {
+  margin: 10px;
+}
+
+.goodValue {
+  color: green;
+  font-weight: bold;
+}
+
+.badValue {
+  color: red;
+  font-weight: bold;
+}
+
+.goodPercentage {
+  color: lightskyblue;
+}
+
+.badPercentage {
+  color: orange;
+}
