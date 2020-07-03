@@ -1,0 +1,120 @@
+db.student.bulkWrite([
+  {insertOne: {
+    "document" : {
+      name: "Thiago Peixoto",
+      subject: "Física",
+      type: "Prova Final",
+      value: 16,
+      timeStamp: new Date()
+      }
+  }},
+  {insertOne: {
+    "document" : {
+      name: "Patrícia Rafaela",
+      subject: "Português",
+      type: "Trabalho Prático",
+      value: 21.3,
+      timeStamp: new Date()
+      }
+  }},
+  {updateOne:{
+    "filter": {name: "João Paulo"},
+    "update": {$set: {subject: "Historia"}}
+    }
+  },
+  {deleteOne: {
+      "filter": {name: "Jesuíno da Silva"}
+    }
+  },
+  {replaceOne:{
+    "filter": {_id: ObjectId("5ef662459a772a1ac484a9ea")},
+    "replacement": {name: "Severina Sauro da Silva"}
+  }}
+], {ordered: false});
+
+db.student.updateOne({name: "João Paulo"}, {$set: {subject: "Historia"}});
+
+db.student.bulkWrite([
+  {updateOne:{
+    "filter": {name: "João Paulo"},
+    "update": {$set: {subject: "Historia"}}
+    }
+  },
+  {replaceOne:{
+    "filter": {_id: ObjectId("5ef662459a772a1ac484a9ea")},
+    "replacement": {
+      name: "Severina Sauro da Silva",
+      subject: "Química",
+      type: "Prova",
+      value: 43,
+      lastModified: new Date(),
+      timeStamp: {$type: "timestamp"}
+      }
+  }}
+]);
+
+
+db.student.getIndexes();
+
+db.student.createIndex({name: -1});
+
+//exclusao pelo nome do indice
+db.student.dropIndex("name_-1");
+//exclusao pelo campo do indice
+db.student.dropIndex({name: -1})
+db.student.dropIndexes();
+
+db.collection.createIndex({campo: "text"});
+
+db.collection.find({$text: {$search: "escritora jornalist"}}, {_id: 1});
+
+db.collection.find({$text: {$search: "escritora jornalist"}}, {_id: 1, score: {$meta: "textScore"}});
+
+db.collection.find({$text: {$search: "escritora jornalist"}}, {_id: 1, score: {$meta: "textScore"}}).sort({score: {$meta: textScore}});
+
+db.collection.find({$text: {$search: "escritora jornalist"}}, {_id: 1, score: {$meta: "textScore"}}).sort({score: {$meta: textScore}}).limit(N);
+
+db.collection.find({$text: {$search: "escritora jornalist"}}, {_id:0,autoria: 1, score: {$meta: "textScore"}}).sort({score: {$meta: textScore}});
+
+db.collection.aggregate([
+  {$project: {}},
+  {$match: {campo: "x"}},
+  {$group: {_id: "$campo", total: {$sum: "$campo"}}},
+  {$sort: {campo1: 1. campo2: -1}},
+  {$skip: N},
+  {$limit: N}
+])
+
+db.student.aggregate([
+  {$group: {_id: null, total: {$sum: "$value"}}}
+])
+
+db.student.aggregate([
+  {$match: {subject: "Matemática"}},
+  {$group: {_id: null, total: {$sum: "$value"}}}
+])
+
+db.student.aggregate([
+  {$match: {subject: "Matemática"}},
+  {$group: {_id: {subject: "$subject", type: "$type"}, total: {$sum: "$value"}}},
+  {$sort: {subject: 1}}
+])
+
+db.student.aggregate([
+  {$group: {_id: {subject: "$subject", type: "$type"}, total: {$sum: "$value"}}},
+  {$sort: {_id: 1}}
+])
+
+
+db.collection.count(query);
+db.collection.countDocuments(query); //mais correto que o count, pois faz uma pesquisa mais acertiva
+
+db.student.countDocuments({subject: "Matemática"})
+
+db.student.count({subject: "Matemática", value: {$gt: 10}})
+db.student.countDocuments({subject: "Matemática", value: {$gt: 10}})
+
+
+db.collection.distinct(field, query)
+
+db.student.distinct("subject").sort()
